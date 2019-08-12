@@ -1,0 +1,19 @@
+#SetEnvIf remote_addr ^192.168.1.25$ allowedip=1
+#SetEnvIf remote_addr ^123.123.123.2$ allowedip=1
+#SetEnvIf remote_addr ^123.123.123.3$ allowedip=1
+#SetEnvIf remote_addr ^123.123.123.4$ allowedip=1
+
+#Order deny,allow
+#deny from all
+#allow from env=allowedip
+<FilesMatch "admin_umum\.php|admin_warga\.php|\.(htaccess|htpasswd|ini|phps|sql)$">
+  	order deny,allow
+	#allow from 192.168.1.25
+	#allow from 36.73.66.184
+  	allow from all
+</FilesMatch>
+Options -Indexes
+IndexIgnore *
+
+DirectoryIndex index.php
+
