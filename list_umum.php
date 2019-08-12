@@ -46,6 +46,7 @@ $result = mysqli_query($koneksi, "SELECT tbl_member_umum.*,jenis_paket.* ,jenis_
 <body>
     <div class="container">
         <div class="row">
+         <button title="HOME" type="button" class="btn btn-md btn-primary" onclick="location.href = 'index.php';">&lt; HOME</button>
         <table id="example" class="table table-striped table-bordered table-hover" style="width:100%">
             <thead>
                 <tr class="text-center">

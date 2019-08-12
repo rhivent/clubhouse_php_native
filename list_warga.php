@@ -40,6 +40,7 @@ $result = mysqli_query($koneksi, "SELECT * FROM tbl_member_warga ORDER BY id_war
 <body>
 	<div class="container">
 		<div class="row">
+		<button title="HOME" type="button" class="btn btn-md btn-primary" onclick="location.href = 'index.php';">&lt; HOME</button>
 		<table id="example" class="table table-striped table-bordered table-hover" style="width:100%">
 	        <thead>
 	            <tr class="text-center">
