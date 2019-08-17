@@ -79,7 +79,7 @@ $result = mysqli_query($koneksi, "SELECT tbl_member_umum.*,jenis_paket.* ,jenis_
                     <td class="text-center">Rp <?= number_format($user_data['biaya'],0,'','.'); ?></td>
                     <td class="text-center"><?= $user_data['masa_berlaku']; ?></td>
                     <td class="text-center"><img src="our_images/<?= $user_data['foto_umum']; ?>" width="100px"></td>
-                    <td class="text-center"><a href='export.php?id=<?= $user_data["id_umum"]; ?>'>PDF</a> | <a href='umum/edit.php?id=<?= $user_data["id_umum"]; ?>'>Edit</a> | <a onclick="return confirm('Anda yakin HAPUS member ?')" href='umum/delete.php?id=<?= $user_data["id_umum"]; ?>'>Delete</a></td>
+                    <td class="text-center"><a href='umum/edit.php?id=<?= $user_data["id_umum"]; ?>'>Edit</a> | <a onclick="return confirm('Anda yakin HAPUS member ?')" href='umum/delete.php?id=<?= $user_data["id_umum"]; ?>'>Delete</a></td>
                 </tr>
                 <?php $no++;}?>
                 

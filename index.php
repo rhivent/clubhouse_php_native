@@ -76,7 +76,9 @@
           <p class="card-text">S1 SISTEM INFORMASI</p>
           <div style="margin: 0px auto;">
             <button title="Member Warga" type="button" class="btn btn-md btn-success" data-target="#exampleModal" data-toggle="modal" data-whatever="@getbootstrap">MEMBER WARGA</button>
-            <button title="Member Umum/Isidentil" type="button" class="btn btn-md btn-warning pull-right" data-target="#exampleModal1" data-toggle="modal" data-whatever="@getbootstrap">MEMBER UMUM</button>
+            <button title="Member Umum" type="button" class="btn btn-md btn-warning" data-target="#exampleModal1" data-toggle="modal" data-whatever="@getbootstrap">MEMBER UMUM</button>
+            <button title="Isidentil" type="button" class="btn btn-md btn-info" data-target="#exampleModal2" data-toggle="modal" data-whatever="@getbootstrap">Isidentil</button>
+            <button title="Karyawan" type="button" class="btn btn-md btn-secondary pull-right" data-target="#exampleModal3" data-toggle="modal" data-whatever="@getbootstrap">Karyawan</button>
           </div>
           <hr>
           <div style="margin: 0px auto;">
@@ -164,8 +166,8 @@
               <!-- <input type="file" name="fo123toumum"> -->
 
             <div class="col-md-3 mb-3">
-              <label for="birth">Tgl Lahir</label>
-              <input type="date" class="form-control" id="birth" name="birth" placeholder="Input Tgl Lahir" required>
+              <label for="birth">Create Date</label>
+              <input type="text" class="form-control" disabled value="<?= date('d-m-Y'); ?>" id="birth" name="birth" placeholder="<?= date('d-m-Y'); ?>" required>
               <!-- <div class="invalid-feedback">
                 Upload Foto Anda
               </div> -->

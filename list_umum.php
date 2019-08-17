@@ -65,32 +65,30 @@ $result = mysqli_query($koneksi, "SELECT tbl_member_umum.*,jenis_paket.* ,jenis_
             <tbody>
                 <?php  
                     $no=1;
-                    while($user_data = mysqli_fetch_array($result)) { ?> 
+                    $total=0;
+                    while($user_data = mysqli_fetch_array($result)) {
+                       $total += $user_data['biaya'];
+                     ?> 
                 <tr>
                     <td class="text-center"><?= $no; ?></td>
                     <td class="text-center"><?= $user_data['nomor_kartu']; ?></td>
-                    <td><?= $user_data['nama_umum']; ?></td>
+                    <td><a href='export.php?id=<?= $user_data["id_umum"]; ?>' title="Download PDF"><?= $user_data['nama_umum']; ?></a></td>
                     <td class="text-center"><span class="badge badge-primary"><?= $user_data['status']; ?></span></td>
                     <td class="text-center"><?= $user_data['nama_jenis_member']; ?></td>
                     <td class="text-center"><?= $user_data['nama_jenis_paket']; ?></td>
                     <td class="text-center">Rp <?= number_format($user_data['biaya'],0,'','.'); ?></td>
                     <td class="text-center"><?= $user_data['masa_berlaku']; ?></td>
-                    <td class="text-center"><img src="our_images/<?= $user_data['foto_umum']; ?>" width="100px"></td>
+                    <td class="text-center"><img src="our_images/<?= $user_data['foto_umum']; ?>" width="100px" alt="image" ></td>
 
                 </tr>
                 <?php $no++;}?>
                 
             </tbody>
             <tfoot>
-                <!-- <tr>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
-                </tr> -->
+                <tr>
+                    <th colspan="6" class="text-right">TOTAL</th>
+                    <th class="text-center">Rp <?= number_format($total,0,'','.'); ?></th>
+                </tr>
             </tfoot>
         </table>
         </div>
