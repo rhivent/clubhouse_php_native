@@ -3,21 +3,16 @@
 require('phpfpdf/fpdf.php');
 include 'koneksi.php';
 $id = $_GET['id'];
-$warga_umum = $koneksi->query("SELECT tbl_member_umum.*,jenis_paket.* ,jenis_member.*
-            FROM tbl_member_umum 
-            LEFT JOIN jenis_paket 
-            ON tbl_member_umum.jenis_paket=jenis_paket.id_jenis_paket 
-            LEFT JOIN jenis_member
-            ON tbl_member_umum.jenis_member=jenis_member.kode_jenis_member WHERE id_umum=$id");
-while ($row = mysqli_fetch_array($warga_umum)){
+$warga_isidentil = $koneksi->query("SELECT * FROM tbl_member_isidentil WHERE id_isidentil=$id");
+
+while ($row = mysqli_fetch_array($warga_isidentil)){
 	$nomorkartu = $row['nomor_kartu'];
 	$nama = $row['nama_umum'];
 	$terbilang = $row['terbilang'];
     $harga = "Rp. ".number_format($row['biaya'],0,'','.');
-    $gunamembayar = "SEWA FASILITAS CLUB HOUSE SELAMA ".strtoupper($row['nama_jenis_paket'])."";
+    $gunamembayar = "SEWA FASILITAS CLUB HOUSE SELAMA 24 Jam";
 }
-// echo $nama;
-// die();
+
 $arraybln=array('Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'); 
 $bln=$arraybln[date('n')-1]; 
 $thn=date('Y');

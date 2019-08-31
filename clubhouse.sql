@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 12, 2019 at 02:16 PM
--- Server version: 5.7.24
--- PHP Version: 7.2.19
+-- Generation Time: Aug 31, 2019 at 01:00 
+-- Server version: 10.1.41-MariaDB-0ubuntu0.18.04.1
+-- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -66,6 +64,52 @@ INSERT INTO `jenis_paket` (`id_jenis_paket`, `nama_jenis_paket`, `harga`, `terbi
 (2, '1 Bulan', '450000', 'Empat Ratus Lima Puluh Ribu Rupiah'),
 (3, '2 Bulan', '800000', 'Delapan Ratus Ribu Rupiah'),
 (4, '3 Bulan', '1200000', 'Satu Juta Dua Ratus Ribu Rupiah');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_member_isidentil`
+--
+
+CREATE TABLE `tbl_member_isidentil` (
+  `id_isidentil` int(11) NOT NULL,
+  `nomor_kartu` varchar(20) DEFAULT NULL,
+  `nama_umum` varchar(200) NOT NULL,
+  `barcode` varchar(50) DEFAULT NULL,
+  `status` varchar(20) NOT NULL,
+  `jenis_member` varchar(15) NOT NULL,
+  `jenis_paket` varchar(15) NOT NULL,
+  `biaya` varchar(15) NOT NULL,
+  `terbilang` text NOT NULL,
+  `alamat` text,
+  `tgl_lahir` date DEFAULT NULL,
+  `foto_umum` text,
+  `tgl_aktivitas` datetime DEFAULT NULL,
+  `masa_berlaku` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_member_isidentil`
+--
+
+INSERT INTO `tbl_member_isidentil` (`id_isidentil`, `nomor_kartu`, `nama_umum`, `barcode`, `status`, `jenis_member`, `jenis_paket`, `biaya`, `terbilang`, `alamat`, `tgl_lahir`, `foto_umum`, `tgl_aktivitas`, `masa_berlaku`) VALUES
+(1, '365894', 'test nama', 'IOUnj9EpDS', 'active', 'isidentil', 'Harian', '15000', 'Lima Belas Ribu Rupiah', 'asmkdaakd asmdkams', '0000-00-00', '1567228063_foto.jpeg', '2019-08-31 00:00:00', '2019-09-01 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_member_karyawan`
+--
+
+CREATE TABLE `tbl_member_karyawan` (
+  `id_karyawan` int(11) NOT NULL,
+  `nama_karyawan` varchar(200) DEFAULT NULL,
+  `jabatan` varchar(200) DEFAULT NULL,
+  `telp` varchar(50) DEFAULT NULL,
+  `tgl_daftar` datetime DEFAULT NULL,
+  `barcode` varchar(50) DEFAULT NULL,
+  `foto_karyawan` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -178,6 +222,18 @@ ALTER TABLE `jenis_paket`
   ADD PRIMARY KEY (`id_jenis_paket`);
 
 --
+-- Indexes for table `tbl_member_isidentil`
+--
+ALTER TABLE `tbl_member_isidentil`
+  ADD PRIMARY KEY (`id_isidentil`);
+
+--
+-- Indexes for table `tbl_member_karyawan`
+--
+ALTER TABLE `tbl_member_karyawan`
+  ADD PRIMARY KEY (`id_karyawan`);
+
+--
 -- Indexes for table `tbl_member_umum`
 --
 ALTER TABLE `tbl_member_umum`
@@ -198,26 +254,31 @@ ALTER TABLE `tbl_member_warga`
 --
 ALTER TABLE `jenis_member`
   MODIFY `id_jenismember` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `jenis_paket`
 --
 ALTER TABLE `jenis_paket`
   MODIFY `id_jenis_paket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
+--
+-- AUTO_INCREMENT for table `tbl_member_isidentil`
+--
+ALTER TABLE `tbl_member_isidentil`
+  MODIFY `id_isidentil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `tbl_member_karyawan`
+--
+ALTER TABLE `tbl_member_karyawan`
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_member_umum`
 --
 ALTER TABLE `tbl_member_umum`
   MODIFY `id_umum` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
-
 --
 -- AUTO_INCREMENT for table `tbl_member_warga`
 --
 ALTER TABLE `tbl_member_warga`
   MODIFY `id_warga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

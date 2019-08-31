@@ -76,14 +76,19 @@
           <p class="card-text">S1 SISTEM INFORMASI</p>
           <div style="margin: 0px auto;">
             <button title="Member Warga" type="button" class="btn btn-md btn-success" data-target="#exampleModal" data-toggle="modal" data-whatever="@getbootstrap">MEMBER WARGA</button>
+            
             <button title="Member Umum" type="button" class="btn btn-md btn-warning" data-target="#exampleModal1" data-toggle="modal" data-whatever="@getbootstrap">MEMBER UMUM</button>
+
             <button title="Isidentil" type="button" class="btn btn-md btn-info" data-target="#exampleModal2" data-toggle="modal" data-whatever="@getbootstrap">Isidentil</button>
+
             <button title="Karyawan" type="button" class="btn btn-md btn-secondary pull-right" data-target="#exampleModal3" data-toggle="modal" data-whatever="@getbootstrap">Karyawan</button>
           </div>
           <hr>
           <div style="margin: 0px auto;">
-            <button title="List Member Warga" type="button" class="btn btn-md btn-success" onclick="location.href = 'list_warga.php';">LIST MEMBER WARGA</button>
-            <button title="List Member Umum/Isidentil" type="button" onclick="location.href='list_umum.php';" class="btn btn-md btn-warning pull-right">LIST MEMBER UMUM</button>
+            <button title="Member Warga" type="button" class="btn btn-md btn-success" onclick="location.href = 'list_warga.php';">MEMBER WARGA</button>
+            <button title="Member Umum" type="button" onclick="location.href='list_umum.php';" class="btn btn-md btn-warning pull-right">MEMBER UMUM</button>
+            <button title="Member Isidentil" type="button" onclick="location.href='list_isidentil.php';" class="btn btn-md btn-info pull-right">Member Isidentil</button>
+            <button title="List Karyawan" type="button" onclick="location.href='list_karyawan.php';" class="btn btn-md btn-secondary pull-right">List Karyawan</button>
           </div>
         </div>
         <div class="card-footer text-muted"></div>
@@ -95,8 +100,66 @@
    
 
     <main role="main">
+    <!---------------- MODAL ----------------->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">REGISTER MEMBER <kbd class="bg-success">WARGA</kbd></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="data.php" method="post" enctype="multipart/form-data" role="form">
+            <div class="modal-body">
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">No Kavling </label>
+                    <input aria-describedby="nomorkavling" type="text" name="nokavling" class="form-control" placeholder="Isikan Nomor Kavling" required>
+                    <small id="nomorkavling" class="form-text text-muted">
+                      Contohnya : M-110 artinya Kavling Blok-M Nomor Rumah 110
+                    </small>
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Nama Lengkap </label>
+                  <input aria-describedby="namawarga" type="text" name="namawarga" class="form-control" placeholder="Isikan Nama Anda" required autofocus>
+                    <small id="namawarga" class="form-text text-muted">
+                      Contohnya : Riventus
+                    </small>
+                </div>
+                <!-- <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Jenis Kelamin :</label>
+                  <select class="form-control" name="jeniskelamin">
+                    <option selected="selected">Pilih Jenis Kelamin</option>
+                    <option value="Perempuan">Perempuan</option>
+                    <option value="Laki-Laki">Laki-laki</option>
+                  </select>
+                </div> -->
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Telp </label>
+                  <input aria-describedby="telephone" type="text" name="telp" class="form-control" min="999999" max="9999999999999" max-leght="" placeholder="Isikan Nomor HP/Telp" required>
+                  <small id="telephone" class="form-text text-muted">
+                      Contohnya : 081234567890/0293123456
+                  </small>
+                </div>
+                <div class="form-group">
+                  <label for="foto">FOTO PROFIL</label>
+                  <input type="file" class="form-control" id="foto" name="fotowarga" placeholder="Input Foto" onchange="return fileValidation()" required>
+                  <div id="imagePreview" ></div>
+                  <!-- <div class="invalid-feedback">
+                    Upload Foto Anda
+                  </div> -->
+                </div>
+            </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-info" name="submit">Lanjut &gt;&gt;&gt;</button>
+                </div>
+              </form>
+            </div>
+            
+          </div>
+        </div>
+      </div>
 
-      <!---------------- MODAL ----------------->
       <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
         <div class="modal-dialog modal-md" role="document">
           <div class="modal-content">
@@ -220,40 +283,102 @@
         </div>
       </div>
 
-
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
         <div class="modal-dialog modal-md" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">REGISTER MEMBER <kbd class="bg-success">WARGA</kbd></h5>
+              <h5 class="modal-title" id="exampleModalLabel2">REGISTRASI MEMBER <kbd class="bg-info">Isidentil</kbd></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="data.php" class="needs-validation was-validated" novalidate method="post" enctype="multipart/form-data" role="form">
+            <div class="modal-body">
+                <div class="form-row">
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustom01">Nama Lengkap</label>
+                    <input type="text" class="form-control" id="validationCustom01" name="namaumum" placeholder="Nama Anda" required autofocus>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustom02">Jenis Member</label>
+                    <input type="text" class="form-control" id="validationCustom02" name="jenismember" value="isidentil" readonly required>
+                  </div>
+
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustom03">Jenis Paket</label>
+                    <input type="text" class="form-control" id="validationCustom03" name="jenispaket" value="Harian" readonly required>
+                  </div>
+              </div>
+
+            <div class="form-group">
+               <label for="validationCustom05">Alamat</label>
+              <textarea class="form-control is-invalid" id="validationCustom05" name="alamat" placeholder="Ketikkan alamat lengkap Anda" required></textarea>
+            </div>
+
+            <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <label for="biaya">Biaya</label>
+              <input type="text" class="form-control" readonly id="biaya" name="biaya" value="15000" required/>
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <label for="birth">Create Date</label>
+              <input type="text" class="form-control" readonly value="<?= date('d-m-Y'); ?>" id="birth" name="birth" placeholder="<?= date('d-m-Y'); ?>" required>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="foto">FOTO PROFIL</label>
+              <input type="file" class="form-control" id="foto2" name="fotoumum" placeholder="Input Foto" onchange="return fileValidation2()" required>
+              <div id="imagePreview2"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="validationCustom09">Terbilang Harga</label>
+            <input readonly class="form-control" id="validationCustom09" name="terbilang" value="Lima Belas Ribu Rupiah" required>
+          </div>
+
+            </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-info" name="submit2">Lanjut &gt;&gt;&gt;</button>
+                </div>
+              </form>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel3">REGISTER <kbd class="bg-secondary">Karyawan</kbd></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <form action="data.php" method="post" enctype="multipart/form-data" role="form">
             <div class="modal-body">
-                <div class="form-group">
-                  <label for="message-text" class="col-form-label">No Kavling </label>
-                    <input aria-describedby="nomorkavling" type="text" name="nokavling" class="form-control" placeholder="Isikan Nomor Kavling" required>
-                    <small id="nomorkavling" class="form-text text-muted">
-                      Contohnya : M-110 artinya Kavling Blok-M Nomor Rumah 110
-                    </small>
+                <div class="form-row">
+                    <div class="col-md-6 mb-6">
+                      <label for="message-text" class="col-form-label">Nama Lengkap </label>
+                      <input aria-describedby="namakarywan" type="text" name="namakarywan" class="form-control" placeholder="Isikan Nama Anda" required autofocus>
+                        <small id="namakarywan" class="form-text text-muted">
+                        Contohnya : Riventus Armandus H A
+                        </small>
+                    </div>
+
+                    <div class="col-md-6 mb-6">
+                      <label for="recipient-name" class="col-form-label">Jenis Jabatan</label>
+                      <select class="custom-select jenisjbtn" name="jenisjbtn" id="jenisjbtn" required>
+                        <option selected>Pilih Jenis Jabatan</option>
+                        <option value="manager">Mananger</option>
+                        <option value="trainer">Trainer</option>
+                        <option value="ob">OB</option>
+                      </select>
+                    </div>
                 </div>
-                <div class="form-group">
-                  <label for="message-text" class="col-form-label">Nama Lengkap </label>
-                  <input aria-describedby="namawarga" type="text" name="namawarga" class="form-control" placeholder="Isikan Nama Anda" required autofocus>
-                    <small id="namawarga" class="form-text text-muted">
-                      Contohnya : Riventus
-                    </small>
-                </div>
-                <!-- <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Jenis Kelamin :</label>
-                  <select class="form-control" name="jeniskelamin">
-                    <option selected="selected">Pilih Jenis Kelamin</option>
-                    <option value="Perempuan">Perempuan</option>
-                    <option value="Laki-Laki">Laki-laki</option>
-                  </select>
-                </div> -->
+
                 <div class="form-group">
                   <label for="message-text" class="col-form-label">Telp </label>
                   <input aria-describedby="telephone" type="text" name="telp" class="form-control" min="999999" max="9999999999999" max-leght="" placeholder="Isikan Nomor HP/Telp" required>
@@ -263,15 +388,12 @@
                 </div>
                 <div class="form-group">
                   <label for="foto">FOTO PROFIL</label>
-                  <input type="file" class="form-control" id="foto" name="fotowarga" placeholder="Input Foto" onchange="return fileValidation()" required>
-                  <div id="imagePreview" ></div>
-                  <!-- <div class="invalid-feedback">
-                    Upload Foto Anda
-                  </div> -->
+                  <input type="file" class="form-control" id="foto3" name="fotokryawan" placeholder="Input Foto" onchange="return fileValidation3()" required>
+                  <div id="imagePreview3" ></div>
                 </div>
             </div>
                 <div class="modal-footer">
-                  <button type="submit" class="btn btn-info" name="submit">Lanjut &gt;&gt;&gt;</button>
+                  <button type="submit" class="btn btn-info" name="submit3">Lanjut &gt;&gt;&gt;</button>
                 </div>
               </form>
             </div>
@@ -279,6 +401,7 @@
           </div>
         </div>
       </div>
+
     </main>
 
 	<!-- Bootstrap core JavaScript
@@ -310,15 +433,10 @@
       $(".jenispaket").change(function () {
         $("#biaya").val($('#jenispaket').val());
       });
-      // $(".jenismember").change(function () {
-      //   $("#jenispaket").val($('#jenismember').val());
-      // });
     </script>
     <script>
        $('.jenismember').change(function () {
             if ($('#jenismember').val() == 'isidentil') {
-              // $("#jenispaket").attr("disabled","disabled");
-              // $("#harian123").attr("selected","selected");
               $(".jenispaket option[value='15000']").removeClass("d-none");
 
               $(".jenispaket option[value='450000']").addClass("d-none");
@@ -332,10 +450,6 @@
               $(".jenispaket option[value='800000']").removeClass("d-none");
               $(".jenispaket option[value='1200000']").removeClass("d-none");
             }
-
-            // if($('#jenismember').val() != 'isidentil'){
-            //   $(".jenispaket option[value='15000']").remove();
-            // }
         })
 
        function fileValidation(){
@@ -372,6 +486,46 @@
                     var reader = new FileReader();
                     reader.onload = function(e) {
                         document.getElementById('imagePreview1').innerHTML = '<img width="100px" src="'+e.target.result+'"/>';
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
+                }
+            }
+        }
+
+        function fileValidation2(){
+          var fileInput = document.getElementById('foto2');
+          var filePath = fileInput.value;
+          var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+            if(!allowedExtensions.exec(filePath)){
+                alert('Extensi file hanya boleh .jpeg.jpg.png.gif');
+                fileInput.value = '';
+                return false;
+            }else{
+                //Image preview
+                if (fileInput.files && fileInput.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('imagePreview2').innerHTML = '<img width="100px" src="'+e.target.result+'"/>';
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
+                }
+            }
+        }
+
+        function fileValidation3(){
+          var fileInput = document.getElementById('foto3');
+          var filePath = fileInput.value;
+          var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+            if(!allowedExtensions.exec(filePath)){
+                alert('Extensi file hanya boleh .jpeg.jpg.png.gif');
+                fileInput.value = '';
+                return false;
+            }else{
+                //Image preview
+                if (fileInput.files && fileInput.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('imagePreview3').innerHTML = '<img width="100px" src="'+e.target.result+'"/>';
                     };
                     reader.readAsDataURL(fileInput.files[0]);
                 }
