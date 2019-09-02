@@ -21,10 +21,9 @@ class allFunction{
     }
 
     function uploadImage($files,$fileName){
-
         $currentDir = ROOT;
 
-        $uploadDirectory = "\our_images\\";
+        $uploadDirectory = "/"."our_images" . "/";
 
         $errors = []; // Store all foreseen and unforseen errors here
 
@@ -49,6 +48,7 @@ class allFunction{
             $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
             
             if ($didUpload) {
+                // die('a');
                 echo "SUCCESS ! \n " . basename($fileName) . " has been uploaded";
             } else {
                 echo "An error occurred somewhere. Try again or contact the admin";
@@ -61,7 +61,7 @@ class allFunction{
     }
 
     function deleteImage($fileName){
-        $d = ROOT.'\our_images\\'.$fileName;
+        $d = ROOT. "/"."our_images" . "/" .$fileName;
         @unlink ("$d");
     }
 
